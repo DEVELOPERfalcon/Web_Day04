@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Box model</title>
+        <!-- 내부 스타일시트 적용 -->
+        <style>
+            /* 이 영역 안에서는 css문법으로 작성 */
+            p.border{
+                /* 경계선 스타일: 경계선 두께(width) 지정이 없으면 기본 3px */
+                /* border-style: solid; */
+                border-style: dotted;
+                /* 경계선의 스타일을 top, bottom, left, right 따로 지정가능 */
+                border-top-style: solid;    /* 따로 지정 가능 */
+
+                /* 경계선의 폭(너비): px(크기지정), thick(키워드-두껍게), medium(키워드-중간), thin(키워드-얇게) */
+                border-width: 5px;
+                border-width: thin;
+                border-left-width: thick;    /* 따로 지정 가능 */
+
+                /* 경계선 색상 */
+                border-color: red;
+                border-bottom-color: blue;    /* 따로 지정 가능 */
+
+                /* 모서리를 둥글게 */
+                border-radius: 20px;
+                border-bottom-left-radius: 0px;    /* 따로 지정 가능 */
+                border-top-right-radius: 0px;    /* 따로 지정 가능 */
+
+                /* 경계선 이미지 */
+                /* 경계선의 너비가 이미지를 보여줄 정도여야 함 */
+                border: 30px solid transparent; /* 축약형(한변에 모두 설정) */
+                border-image-source: url('./border.png');
+                border-image-slice: 30 30; /* 나눌 조각의 높이, 너비 순서 */
+                /* border-image-repeat: stretch; */ /* 이미지를 늘려서 보여줌 */
+                border-image-repeat: round;
+
+                /* 요소 크기 */
+                /* width: 500px; */ /* 픽셀로 표현 */
+                width: 70%; /* 퍼센트로 표현 */
+                /* height: 50%; */ /* 높이값은 %가 안됨. 부모사이즈가 정해져있지 않기 때문이다.(부모사이즈를 주면 가능) */
+                height: 300px;
+                margin-left: 50px;
+
+                /* 가운데 정렬 */
+                margin-left: auto; margin-right: auto;
+
+            }
+
+            /* img, input요소는 인라인요소 중에서 너비조절이 가능한 요소이다 */
+            img{width: 500px; border: 1px solid black;}
+            input{width: 100%; background-color: aqua;}
+
+            /* 너비조정이 불가능한 인라인요소 */
+            a{background-color: red; width: 100%;}  /* width가 적용 안됨 */
+            em{background-color: aqua; width: 100px;}  /* width가 적용 안됨 */
+
+            /* margin에 대한 연습 */
+            /* Web에서의 마진은 서로 겹쳐짐 */
+            #p1{background-color: red; height: 50px; margin: 0px; margin-bottom: 10px;}  /* p는 기본적으로 마진을 가지고 있으므로 연습을 위해 마진을 없앰 */
+            #p2{background-color: green; height: 50px; margin: 0px; margin-top: 10px;}  /* 위아래 10px씩해서 20px이 아니라 겹쳐져서 10px임 */
+
+            /* 심지어 마진에 음수값 지정도 가능함. 겹쳐질 수 있다는 것임 */
+            #p1{background-color: red; height: 50px; margin: 0px;}
+            #p2{background-color: green; height: 50px; margin: 0px; margin-top: -20px; width: 50%;}
+
+            /* 배경 스타일 */
+            #background{
+                background-color: #00ff00;
+                background-image: url('./image.png'); /* 투명도가 있는 png 사용 */
+                background-size: 200px 100px;
+
+                background-repeat: repeat;   /* defult(기본) */
+                background-repeat: repeat-x;    /* x축만 반복 */
+                background-repeat: no-repeat;    /* 반복 없음 */
+
+                background-position: center;    /* 배경위치 지정(가운데) */
+                background-position: right top; /* 우상단 */
+                background-position: center top;    /* 중앙 상단 */
+
+                /* 축약형 */
+                background: green url('image.png') no-repeat center;    /* 색깔 이미지경로 반복 위치 순서*/
+
+                padding: 30px;
+            }
+
+            /* background-attachment */
+            #attachment{
+                width: 60%;
+                height: 200px;
+                border: 2px solid blue;
+                overflow: hidden;   /* 내용물이 많아 넘치면 숨기기 */
+                overflow: scroll;   /* 내용물이 많아 넘치면 스크롤 만들기 */
+                margin-left: auto; margin-right: auto;
+
+                background-image: url('./image.png');
+                background-size: 100px 50px;
+                background-repeat: no-repeat;
+                background-position: center;    /* 스크롤해도 계속 중앙에 위치 */
+
+                background-attachment: scroll; /* 기본: 컨텐츠가 스크롤되도 요소의 가운데에 이미지가 배치 */
+                background-attachment: local; /* 배경이미지가 컨텐츠에 붙어 있는 느낌(내용물의 정가운데에 고정) */
+                background-attachment: fixed; /* 브라우저를 기준으로 가운데 배치(요소가 브라우저 가운데 없으면 안보임) */
+            }
+
+        </style>
+    </head>
+    <body>
+        <!-- 경계선(border), 요소크기, 중앙정렬 -->
+        <p class="border">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint dolore, dolores rerum eius ad beatae. Atque, quo libero. Quae nemo sunt, vel facere architecto sapiente nobis dolor harum. Recusandae, tempora!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque et sunt vero hic, exercitationem dolores corporis nam atque, odio velit praesentium, consequatur quaerat soluta rem quasi magnam voluptatem sed. Corporis.
+        </p>
+
+        <!-- 요소크기에 대한 고찰 -->
+        <!-- 인라인요소: 너비조절 가능한 요소 -->
+        <img src="./back.jpg" alt="back">
+        <input type="text">
+        <!-- 인라인요소: 너비조절 불가능한 요소 -->
+        <a href="">ancher element</a>
+        <em>강조 요소</em>
+
+        <hr>
+        <!-- margin -->
+        <div class="margin">
+            <p id="p1">p1</p>
+            <p id="p2">p2</p>
+        </div>
+
+        <!-- background -->
+        <p id="background">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente a excepturi exercitationem corporis molestiae obcaecati deleniti modi officia nemo dicta porro necessitatibus animi voluptate, sunt quisquam aut alias! Fugiat, minima.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat esse, officiis deleniti voluptas natus est molestiae accusamus nisi nam atque explicabo sequi commodi recusandae, impedit fugiat nulla mollitia qui a.
+        </p>
+
+        <!-- background-attachment -->
+        <p id="attachment">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa molestiae qui itaque sequi dolores eaque eum! Accusantium saepe ea totam sunt qui earum tenetur, mollitia non, sapiente ducimus aliquid eveniet.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis recusandae incidunt accusantium? Laboriosam eum incidunt nemo ipsa saepe fugiat, minus at sunt autem, commodi illo. Necessitatibus, quibusdam. Cumque, nostrum adipisci!
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex id quidem exercitationem repudiandae, facere ullam eius quo eligendi, deleniti quod alias totam modi perferendis magni in consectetur cumque incidunt amet!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente iure iste laboriosam beatae, ratione unde mollitia est! Similique quos eos aliquam fuga deleniti obcaecati, placeat reprehenderit possimus, at odio ipsa.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab suscipit numquam molestias labore pariatur placeat expedita deserunt hic iure. Nesciunt atque nobis totam itaque rem accusamus provident pariatur repellendus asperiores?
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi sunt at hic ullam earum architecto perspiciatis dolor consequuntur omnis perferendis quia maiores aperiam, eos id distinctio assumenda minus repudiandae accusamus.
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum dignissimos recusandae earum magnam, dolorum quae rem eum! Nostrum amet aut in sit eligendi alias impedit. Voluptatum modi voluptates voluptatibus eveniet.
+        </p>
+
+    </body>
+</html>

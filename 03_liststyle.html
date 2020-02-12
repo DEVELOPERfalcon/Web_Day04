@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ex</title>
+        <style>
+            ul{
+                list-style: none;   /* 앞에 기호 없애기 */
+                border-top: 1px solid red;
+                border-bottom: 1px solid red;
+                text-align: center;
+                padding: 10px 0px;   /* 10px: 상하, 0px: 좌우 */
+            }
+
+            ul li{
+                display: inline;   /* 블럭요소 -> 인라인요소로 변경시키기(한줄로 만들기) */
+                padding: 0px 10px 0px 10px;
+                letter-spacing: 8px;   /* 글자 사이 간격 */
+                text-transform: uppercase;   /* 대문자 만들기 */
+            }
+
+            /* 마우스를 갔다 댔을 때만 밑줄 생기게 하기 */
+            ul li a{text-decoration: none; color: black;}
+            ul li a:hover{text-decoration: underline;}
+
+            #header{
+                background-color: #cccccc;
+                text-align: center;
+                padding: 3em 0em;
+
+                background-image: url('./moana01.jpg');
+                background-size: cover;
+                height: 200px;
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="header">
+            <h1>HOME PAGE</h1>
+            <p>This is my home page</p>
+        </div>
+        <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="">Blog</a></li>
+            <li><a href="">About</a></li>
+            <li><a href="">Contact</a></li>
+        </ul>
+    </body>
+</html>
